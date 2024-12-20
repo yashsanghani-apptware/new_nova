@@ -1,0 +1,107 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/offering.schema.json",
+  "title": "Offering",
+  "description": "Schema for an offering in the system.",
+  "type": "object",
+  "properties": {
+    "offering_id": {
+      "type": "string",
+      "description": "Unique identifier for the offering."
+    },
+    "listing_id": {
+      "type": "string",
+      "description": "Identifier for the associated listing."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the offering."
+    },
+    "workflows": {
+      "type": "object",
+      "description": "Workflow-related information."
+    },
+    "value_driver": {
+      "type": "object",
+      "description": "Reasons why the deal is attractive."
+    },
+    "expected_returns": {
+      "type": "object",
+      "properties": {
+        "target_net_irr": { "type": "string" },
+        "target_net_yield": { "type": "string" },
+        "net_equity_multiple": { "type": "string" },
+        "target_hold": { "type": "string" },
+        "target_net_returns": { "type": "string" }
+      },
+      "required": [
+        "target_net_irr",
+        "target_net_yield",
+        "net_equity_multiple",
+        "target_hold",
+        "target_net_returns"
+      ],
+      "description": "Expected returns from the offering."
+    },
+    "details": {
+      "type": "object",
+      "properties": {
+        "valid_from_date": { "type": "string", "format": "date" },
+        "valid_to_date": { "type": "string", "format": "date" },
+        "total_shares": { "type": "string" },
+        "shares_remaining": { "type": "string" },
+        "holding_period": { "type": "string" },
+        "minimum_holding_shares": { "type": "string" },
+        "maximum_holding_shares": { "type": "string" },
+        "subscription_start_date": { "type": "string", "format": "date" },
+        "subscription_end_date": { "type": "string", "format": "date" }
+      },
+      "required": [
+        "valid_from_date",
+        "valid_to_date",
+        "total_shares",
+        "shares_remaining",
+        "holding_period",
+        "minimum_holding_shares",
+        "maximum_holding_shares",
+        "subscription_start_date",
+        "subscription_end_date"
+      ],
+      "description": "Detailed information about the offering."
+    },
+    "documents": {
+      "type": "object",
+      "properties": {
+        "investor_memo": { "type": "string" },
+        "investor_documents": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "compliance_audits": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": [
+        "investor_memo",
+        "investor_documents",
+        "compliance_audits"
+      ],
+      "description": "Documents related to the offering."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the offering was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the offering was last updated."
+    }
+  },
+  "required": [
+    "listing_id",
+    "name"
+  ]
+}

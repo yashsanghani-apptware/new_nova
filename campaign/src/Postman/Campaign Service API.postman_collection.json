@@ -1,0 +1,299 @@
+{
+	"info": {
+		"_postman_id": "090b33f4-48e5-49ca-a78e-7d20ba4118ba",
+		"name": "Campaign Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31052964",
+		"_collection_link": "https://www.postman.com/speeding-capsule-251097/workspace/agsiri/collection/31052964-090b33f4-48e5-49ca-a78e-7d20ba4118ba?action=share&source=collection_link&creator=31052964"
+	},
+	"item": [
+		{
+			"name": "create campaign ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjc2Mzg1NCwiZXhwIjoxNzI2NzY3NDU0fQ.hiEcKClucSLhevfH1Y8hs07vMw_bK0EAnjSFQH91wlY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_auth_token>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Campaign Name\",\n\t\"address\": {\n\t\t\"house_number\": \"123\",\n\t\t\"street\": \"Main St\",\n\t\t\"apartment\": \"4B\",\n\t\t\"city\": \"Metropolis\",\n\t\t\"state\": \"NY\",\n\t\t\"zip\": \"12345\"\n\t},\n\t\"property_description\": \"A detailed description of the property.\",\n\t// \"dataroom_id\": \"dataroom123\",\n\t\"offering_id\": \"66ec4bb822f659c097ffe552\", \n\t\"workflows\": {},\n\t\"main_picture\": \"http://example.com/main_picture.jpg\",\n\t\"images\": [],\n\t\"videos\": [],\n\t// \"images\": [\"http://example.com/image1.jpg\", \"http://example.com/image2.jpg\"],\n\t// \"videos\": [ \"http://example.com/video1.mp4\"],\n\t\"maps\": [\n\t\t\"http://example.com/map1.jpg\"\n\t],\n\t\"expected_returns\": {\n\t\t\"target_net_irr\": 10.5,\n\t\t\"target_net_yield\": 8.2,\n\t\t\"net_equity_multiple\": 1.5,\n\t\t\"target_hold\": \"5 years\",\n\t\t\"target_net_returns\": 12.0\n\t},\n\t\"offering_details\": {\n\t\t\"valid_from_date\": \"2024-01-01\",\n\t\t\"valid_to_date\": \"2024-12-31\",\n\t\t\"total_shares\": 1000000,\n\t\t\"shares_remaining\": 500000,\n\t\t\"holding_period\": \"6 months\",\n\t\t\"minimum_holding_shares\": 100,\n\t\t\"maximum_holding_shares\": 10000,\n\t\t\"subscription_start_date\": \"2024-01-01\",\n\t\t\"subscription_end_date\": \"2024-06-30\"\n\t},\n\t\"webinars\": [\n\t\t\"http://example.com/webinar1.mp4\"\n\t],\n\t\"newsletters\": [\n\t\t\"http://example.com/newsletter1.pdf\"\n\t]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns"
+					]
+				},
+				"description": "Generated from cURL: curl -X POST http://localhost:3000/campaigns \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer <your_auth_token>\" \\\n-d '{\n  \"name\": \"Campaign Name\",\n  \"address\": {\n    \"house_number\": \"123\",\n    \"street\": \"Main St\",\n    \"apartment\": \"4B\",\n    \"city\": \"Metropolis\",\n    \"state\": \"NY\",\n    \"zip\": \"12345\"\n  },\n  \"property_description\": \"A detailed description of the property.\",\n  \"dataroom_id\": \"dataroom123\",\n  \"workflows\": {},\n  \"main_picture\": \"http://example.com/main_picture.jpg\",\n  \"images\": [\"http://example.com/image1.jpg\", \"http://example.com/image2.jpg\"],\n  \"videos\": [\"http://example.com/video1.mp4\"],\n  \"maps\": [\"http://example.com/map1.jpg\"],\n  \"expected_returns\": {\n    \"target_net_irr\": 10.5,\n    \"target_net_yield\": 8.2,\n    \"net_equity_multiple\": 1.5,\n    \"target_hold\": \"5 years\",\n    \"target_net_returns\": 12.0\n  },\n  \"offering_details\": {\n    \"valid_from_date\": \"2024-01-01T00:00:00Z\",\n    \"valid_to_date\": \"2024-12-31T23:59:59Z\",\n    \"total_shares\": 1000000,\n    \"shares_remaining\": 500000,\n    \"holding_period\": \"6 months\",\n    \"minimum_holding_shares\": 100,\n    \"maximum_holding_shares\": 10000,\n    \"subscription_start_date\": \"2024-01-01T00:00:00Z\",\n    \"subscription_end_date\": \"2024-06-30T23:59:59Z\"\n  },\n  \"webinars\": [\"http://example.com/webinar1.mp4\"],\n  \"newsletters\": [\"http://example.com/newsletter1.pdf\"]\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Modify Campaign",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjY3MDQ1MSwiZXhwIjoxNzI2Njc0MDUxfQ.6cj9Bt_9YxRmslaSEvl9RthQ_r-PCLQVO7qIvd8MlB4",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <your_auth_token>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Updated Campaign Name\",\n  \"address\": {\n    \"house_number\": \"123\",\n    \"street\": \"Main St\",\n    \"apartment\": \"4B\",\n    \"city\": \"Metropolis\",\n    \"state\": \"NY\",\n    \"zip\": \"12345\"\n  },\n  \"property_description\": \"An updated description of the property.\",\n  \"offering_id\": \"66e9a47d6985dbb66535e8f0\", // Ensure this ID is valid\n  \"workflows\": {},\n  \"main_picture\": \"http://example.com/updated_main_picture.jpg\",\n  \"images\": [\"http://example.com/updated_image1.jpg\", \"http://example.com/updated_image2.jpg\"],\n  \"videos\": [\"http://example.com/updated_video1.mp4\"],\n  \"maps\": [\"http://example.com/updated_map1.jpg\"],\n  \"expected_returns\": {\n    \"target_net_irr\": 11.0,\n    \"target_net_yield\": 8.5,\n    \"net_equity_multiple\": 1.6,\n    \"target_hold\": \"6 years\",\n    \"target_net_returns\": 13.0\n  },\n  \"offering_details\": {\n    \"valid_from_date\": \"2024-02-01\",\n    \"valid_to_date\": \"2024-12-31\",\n    \"total_shares\": 1500000,\n    \"shares_remaining\": 700000,\n    \"holding_period\": \"7 months\",\n    \"minimum_holding_shares\": 150,\n    \"maximum_holding_shares\": 12000,\n    \"subscription_start_date\": \"2024-02-01\",\n    \"subscription_end_date\": \"2024-07-31\"\n  },\n  \"webinars\": [\"http://example.com/updated_webinar1.mp4\"],\n  \"newsletters\": [\"http://example.com/updated_newsletter1.pdf\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns/66eae65f016f9c295a070e6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns",
+						"66eae65f016f9c295a070e6c"
+					]
+				},
+				"description": "Generated from cURL: curl -X PUT http://localhost:3000/campaigns/{campaign_id} \\\n-H \"Content-Type: application/json\" \\\n-H \"Authorization: Bearer <your_auth_token>\" \\\n-d '{\n  \"name\": \"Updated Campaign Name\",\n  \"address\": {\n    \"house_number\": \"123\",\n    \"street\": \"Main St\",\n    \"apartment\": \"4B\",\n    \"city\": \"Metropolis\",\n    \"state\": \"NY\",\n    \"zip\": \"12345\"\n  },\n  \"property_description\": \"An updated description of the property.\",\n  \"offering_id\": \"66e9a47d6985dbb66535e8f0\", // Ensure this ID is valid\n  \"workflows\": {},\n  \"main_picture\": \"http://example.com/updated_main_picture.jpg\",\n  \"images\": [\"http://example.com/updated_image1.jpg\", \"http://example.com/updated_image2.jpg\"],\n  \"videos\": [\"http://example.com/updated_video1.mp4\"],\n  \"maps\": [\"http://example.com/updated_map1.jpg\"],\n  \"expected_returns\": {\n    \"target_net_irr\": 11.0,\n    \"target_net_yield\": 8.5,\n    \"net_equity_multiple\": 1.6,\n    \"target_hold\": \"6 years\",\n    \"target_net_returns\": 13.0\n  },\n  \"offering_details\": {\n    \"valid_from_date\": \"2024-02-01\",\n    \"valid_to_date\": \"2024-12-31\",\n    \"total_shares\": 1500000,\n    \"shares_remaining\": 700000,\n    \"holding_period\": \"7 months\",\n    \"minimum_holding_shares\": 150,\n    \"maximum_holding_shares\": 12000,\n    \"subscription_start_date\": \"2024-02-01\",\n    \"subscription_end_date\": \"2024-07-31\"\n  },\n  \"webinars\": [\"http://example.com/updated_webinar1.mp4\"],\n  \"newsletters\": [\"http://example.com/updated_newsletter1.pdf\"]\n}'\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get single Campaign ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjc2Mzg1NCwiZXhwIjoxNzI2NzY3NDU0fQ.hiEcKClucSLhevfH1Y8hs07vMw_bK0EAnjSFQH91wlY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns/66ec539d9e4769b66ac75987",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns",
+						"66ec539d9e4769b66ac75987"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/campaigns/66e9a47d6985dbb66535e8f0 \\\n     -H \"Content-Type: application/json\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Campaigns ",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjY2NzA0MSwiZXhwIjoxNzI2NjcwNjQxfQ.5vNTRomxd7VIYVPAptUi3q-_TNkEddIBeDamJyPBOSQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns"
+					]
+				},
+				"description": "Generated from cURL: curl -X GET http://localhost:3000/campaigns/ \\\n     -H \"Content-Type: application/json\"\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Query Campaign",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjc2Mzg1NCwiZXhwIjoxNzI2NzY3NDU0fQ.hiEcKClucSLhevfH1Y8hs07vMw_bK0EAnjSFQH91wlY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns/query?name=Campaign Name",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns",
+						"query"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Campaign Name"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Campaigns",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjc2Mzg1NCwiZXhwIjoxNzI2NzY3NDU0fQ.hiEcKClucSLhevfH1Y8hs07vMw_bK0EAnjSFQH91wlY",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns/search?name=d",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns",
+						"search"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "SCREENED",
+							"disabled": true
+						},
+						{
+							"key": "name",
+							"value": "d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Single Campaign",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NmRlZTNmODc2NzhkMDAwMzkzNmVhOWMiLCJ1c2VybmFtZSI6ImpvaG5kb2UtMiIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyNjY2NzA0MSwiZXhwIjoxNzI2NjcwNjQxfQ.5vNTRomxd7VIYVPAptUi3q-_TNkEddIBeDamJyPBOSQ",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7000/api/campaigns/66eae65f016f9c295a070e6c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"campaigns",
+						"66eae65f016f9c295a070e6c"
+					]
+				},
+				"description": "Generated from cURL: curl -X DELETE http://localhost:3000/campaigns/66e9a47d6985dbb66535e8f0 \\\n     -H \"Content-Type: application/json\"\n"
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/portfolio.schema.json",
+  "title": "Portfolio",
+  "description": "Schema for a portfolio in the system.",
+  "type": "object",
+  "properties": {
+    "portfolio_id": {
+      "type": "string",
+      "description": "Unique identifier for the portfolio."
+    },
+    "user_id": {
+      "type": "string",
+      "description": "ID of the user who owns the portfolio."
+    },
+    "investments": {
+      "type": "array",
+      "description": "Array of investments in the portfolio.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "offering_id": {
+            "type": "string",
+            "description": "ID of the offering."
+          },
+          "number_of_shares": {
+            "type": "number",
+            "description": "Number of shares."
+          },
+          "share_price": {
+            "type": "number",
+            "description": "Price per share."
+          },
+          "investment_date": {
+            "type": "string",
+            "description": "Date of investment."
+          },
+          "holding_period": {
+            "type": "number",
+            "description": "Holding period of the investment."
+          },
+          "hp_annotation": {
+            "type": "string",
+            "description": "Holding Annotation Note."
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of related document URLs or paths."
+          },
+          "status": {
+            "type": "string",
+            "enum": ["ACTIVE", "CLOSED"],
+            "description": "Status of the investment."
+          }
+        },
+        "required": ["offering_id", "status"],
+        "additionalProperties": false
+      }
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the portfolio was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the portfolio was last updated."
+    },
+    "isDeleted": {
+      "type": "boolean",
+      "description": "Soft delete flag."
+    }
+  },
+  "required": ["user_id", "investments"],
+  "additionalProperties": false
+}

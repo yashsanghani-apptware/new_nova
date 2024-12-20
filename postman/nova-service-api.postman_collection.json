@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "0971282e-627e-490a-a007-c69ba1c9822b",
+		"name": "nova Service API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31052964",
+		"_collection_link": "https://www.postman.com/speeding-capsule-251097/workspace/agsiri/collection/31052964-0971282e-627e-490a-a007-c69ba1c9822b?action=share&source=collection_link&creator=31052964"
+	},
+	"item": [
+		{
+			"name": "create listings",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n//   \"listing_id\": \"12334\",\n  \"name\": \"Beautifule Fearmhouse 2\",\n  \"address\": {\n    \"house_number\": \"123\",\n    \"street\": \"Main Street\",\n    \"apartment\": \"A1\",\n    \"city\": \"Springfield\",\n    \"state\": \"Illinois\",\n    \"zip\": \"62701\"\n  },\n  \"property_description\": \"A beautiful farmhouse with modern amenities and spacious land.\",\n  \"property_highlights\": {\n    \"total_acres\": 150,\n    \"tillable\": 100,\n    \"woodland\": 30,\n    \"wetland\": 20,\n    \"deed_restrictions\": \"None\",\n    \"barns\": [\n      {\n        \"size\": \"20x30\",\n        \"description\": \"Large barn for storage and livestock.\"\n      },\n      {\n        \"size\": \"15x20\",\n        \"description\": \"Smaller barn for tools and equipment.\"\n      }\n    ]\n  },\n  \"days_on_market\": 30,\n  \"type\": \"Farm\",\n  \"built_on\": \"2001-05-20T00:00:00.000Z\",\n  \"renovated_on\": [\"2010-06-15T00:00:00.000Z\", \"2018-08-30T00:00:00.000Z\"],\n  \"listing_agent\": {\n    \"name\": \"John Doe\",\n    \"company\": \"Real Estate Inc.\",\n    \"phone_number\": \"555-1234\",\n    \"email\": \"johndoe@example.com\"\n  },\n  \"dataroom_id\": \"ABC12345\",\n  \"workflows\": {\n    \"step1\": \"Initial screening\",\n    \"step2\": \"Financial review\"\n  },\n  \"images\": [\n    \"https://example.com/images/property1.jpg\",\n    \"https://example.com/images/property2.jpg\"\n  ],\n  \"videos\": [\n    \"https://example.com/videos/property1.mp4\"\n  ],\n  \"maps\": [\n    \"https://example.com/maps/property1.png\"\n  ],\n  \"property_details\": {\n    \"parking\": {\n      \"number_of_spaces\": 2,\n      \"type\": \"Garage\"\n    },\n    \"interior\": {\n      \"bathrooms\": {\n        \"number_full\": 2,\n        \"number_total\": 3,\n        \"bathroom1_level\": \"First Floor\",\n        \"bathroom2_level\": \"Second Floor\"\n      },\n      \"rooms\": [\n        {\n          \"type\": \"Living Room\",\n          \"level\": \"First Floor\"\n        },\n        {\n          \"type\": \"Bedroom\",\n          \"level\": \"Second Floor\"\n        }\n      ],\n      \"basement\": {\n        \"finished\": true,\n        \"size\": \"1000 sq ft\"\n      },\n      \"laundry\": {\n        \"location\": \"First Floor\",\n        \"appliances\": \"Washer and Dryer\"\n      },\n      \"fireplace\": {\n        \"type\": \"Wood-burning\",\n        \"number\": 1\n      },\n      \"interior_features\": {\n        \"floors\": \"Hardwood\",\n        \"ceiling_height\": \"9 ft\"\n      }\n    },\n    \"exterior\": {\n      \"features\": {\n        \"garden\": true,\n        \"swimming_pool\": \"Yes\"\n      },\n      \"property_information\": {\n        \"fencing\": \"Wood\",\n        \"driveway\": \"Paved\"\n      },\n      \"lot_information\": {\n        \"size\": \"3 acres\",\n        \"zoning\": \"Residential\"\n      }\n    },\n    \"financial\": {\n      \"price\": 450000,\n      \"taxes\": \"Annual: $3000\"\n    },\n    \"utilities\": {\n      \"heating_and_cooling\": {\n        \"heating_type\": \"Forced air\",\n        \"cooling_type\": \"Central\"\n      },\n      \"utility\": {\n        \"electricity\": \"Available\",\n        \"water\": \"City water\",\n        \"sewage\": \"Septic system\"\n      }\n    },\n    \"location\": {\n      \"school_information\": {\n        \"district\": \"Springfield\",\n        \"elementary_school\": \"Springfield Elementary\"\n      },\n      \"location_information\": {\n        \"latitude\": 39.7817,\n        \"longitude\": -89.6501\n      }\n    },\n    \"other\": {\n      \"notes\": \"Recent renovation on the kitchen and bathrooms.\"\n    }\n  },\n  \"sales_and_tax\": {\n    \"sales_history\": {\n      \"last_sold_date\": \"2018-07-01\",\n      \"last_sold_price\": 400000\n    },\n    \"tax_history\": {\n      \"2020\": {\n        \"assessed_value\": 450000,\n        \"tax_amount\": 3000\n      }\n    }\n  },\n  \"public_facts\": {\n    \"bedrooms\": 4,\n    \"square_feet\": \"3500 sq ft\",\n    \"year_built\": 2001\n  },\n  \"schools\": {\n    \"elementary_school\": \"Springfield Elementary\",\n    \"high_school\": \"Springfield High School\"\n  },\n  \"listing_source\": \"REALTOR\",\n  \"status\": \"SOURCED\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/listings",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"listings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all listings",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/listings",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"listings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get listing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/listings/:linsting_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"listings",
+						":linsting_id"
+					],
+					"variable": [
+						{
+							"key": "linsting_id",
+							"value": "66d5a9b0179b4b057e7487aa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update listing",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"test-yash\",\n    \"property_description\": \"A beautiful farmhouse with modern amenities and spacious land.-test\",\n    \"days_on_market\": 90,\n    \"type\": \"Farm\",\n    \"built_on\": \"2001-05-20T00:00:00.000Z\",\n    \"renovated_on\": [\n        \"2010-06-15T00:00:00.000Z\",\n        \"2018-08-30T00:00:00.000Z\"\n    ]\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/listings/:linsting_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"listings",
+						":linsting_id"
+					],
+					"variable": [
+						{
+							"key": "linsting_id",
+							"value": "66d5a794b11910a5a5482a16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete listing",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/listings/:linsting_id",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"listings",
+						":linsting_id"
+					],
+					"variable": [
+						{
+							"key": "linsting_id",
+							"value": "66d1a4d0a18cbae0486a71f7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "query listing",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/listings/query?days_on_market[$gt]=90&address.city=Springfield",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"listings",
+						"query"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "test-yash",
+							"disabled": true
+						},
+						{
+							"key": "days_on_market[$gt]",
+							"value": "90"
+						},
+						{
+							"key": "public_facts.bedrooms[$lte]",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "address.city",
+							"value": "Springfield"
+						},
+						{
+							"key": "property_highlights.total_acres[$lte]",
+							"value": "75",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:6000"
+		}
+	]
+}

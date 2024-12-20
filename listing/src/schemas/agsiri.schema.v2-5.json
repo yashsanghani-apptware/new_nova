@@ -1,0 +1,256 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://example.com/listing.schema.json",
+  "title": "Listing",
+  "description": "Schema for a property listing in the system.",
+  "type": "object",
+  "properties": {
+    "listing_id": {
+      "type": "string",
+      "description": "Unique identifier for the listing."
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the property listing."
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "house_number": { "type": "string" },
+        "street": { "type": "string" },
+        "apartment": { "type": "string" },
+        "city": { "type": "string" },
+        "state": { "type": "string" },
+        "zip": { "type": "string" }
+      },
+      "required": ["house_number", "street", "city", "state", "zip"],
+      "description": "Address of the property."
+    },
+    "property_description": {
+      "type": "string",
+      "description": "Detailed description of the property."
+    },
+    "property_highlights": {
+      "type": "object",
+      "properties": {
+        "total_acres": { "type": "number" },
+        "tillable": { "type": "number" },
+        "woodland": { "type": "number" },
+        "wetland": { "type": "number" },
+        "deed_restrictions": { "type": "string" },
+        "barns": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "size": { "type": "string" },
+              "description": { "type": "string" }
+            },
+            "required": ["size", "description"]
+          }
+        }
+      },
+      "required": [
+        "total_acres",
+        "tillable",
+        "woodland",
+        "wetland",
+        "deed_restrictions",
+        "barns"
+      ],
+      "description": "Key highlights of the property."
+    },
+    "days_on_market": {
+      "type": "number",
+      "description": "Number of days the property has been on the market."
+    },
+    "type": {
+      "type": "string",
+      "description": "Type of the property (e.g., Farm, Residential)."
+    },
+    "built_on": {
+      "type": "string",
+      "format": "date",
+      "description": "Date when the property was built."
+    },
+    "renovated_on": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date"
+      },
+      "description": "Dates when the property was renovated."
+    },
+    "listing_agent": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "company": { "type": "string" },
+        "phone_number": { "type": "string" },
+        "email": { "type": "string" }
+      },
+      "required": ["name", "company", "phone_number"],
+      "description": "Details of the listing agent."
+    },
+    "dataroom_id": {
+      "type": "string",
+      "description": "Identifier for the associated data room."
+    },
+    "workflows": {
+      "type": "object",
+      "description": "Workflow-related information."
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "URLs of images related to the property."
+    },
+    "videos": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "URLs of videos related to the property."
+    },
+    "maps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "uri"
+      },
+      "description": "URLs of maps related to the property."
+    },
+    "property_details": {
+      "type": "object",
+      "properties": {
+        "parking": {
+          "type": "object",
+          "properties": {
+            "number_of_spaces": { "type": "number" },
+            "type": { "type": "string" }
+          },
+          "description": "Parking details."
+        },
+        "interior": {
+          "type": "object",
+          "properties": {
+            "bathrooms": {
+              "type": "object",
+              "properties": {
+                "number_full": { "type": "number" },
+                "number_total": { "type": "number" },
+                "bathroom1_level": { "type": "string" },
+                "bathroom2_level": { "type": "string" }
+              },
+              "required": [
+                "number_full",
+                "number_total",
+                "bathroom1_level",
+                "bathroom2_level"
+              ]
+            },
+            "rooms": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type": { "type": "string" },
+                  "level": { "type": "string" }
+                },
+                "required": []
+              }
+            },
+            "basement": { "type": "object" },
+            "laundry": { "type": "object" },
+            "fireplace": { "type": "object" },
+            "interior_features": { "type": "object" }
+          },
+          "description": "Interior details."
+        },
+        "exterior": {
+          "type": "object",
+          "properties": {
+            "features": { "type": "object" },
+            "property_information": { "type": "object" },
+            "lot_information": { "type": "object" }
+          },
+          "description": "Exterior details."
+        },
+        "financial": { "type": "object" },
+        "utilities": {
+          "type": "object",
+          "properties": {
+            "heating_and_cooling": { "type": "object" },
+            "utility": { "type": "object" }
+          },
+          "description": "Utility details."
+        },
+        "location": {
+          "type": "object",
+          "properties": {
+            "school_information": { "type": "object" },
+            "location_information": { "type": "object" }
+          },
+          "description": "Location details."
+        },
+        "other": { "type": "object" }
+      },
+      "description": "Comprehensive property details."
+    },
+    "sales_and_tax": {
+      "type": "object",
+      "properties": {
+        "sales_history": { "type": "array" },
+        "tax_history": { "type": "object" }
+      },
+      "description": "Sales and tax history of the property."
+    },
+    "public_facts": { "type": "object" },
+    "schools": { "type": "string" },
+    "listing_source": {
+      "type": "string",
+      "enum": ["SYSTEM", "REALTOR"],
+      "description": "Source of the listing."
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "ACTIVE",
+        "PENDING",
+        "SOURCED",
+        "SCREENED",
+        "IN REVIEW",
+        "REVIEWED",
+        "IN DUE DILIGENCE",
+        "SELECTED",
+        "REJECTED",
+        "ARCHIVED"
+      ],
+      "description": "Current status of the listing."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the listing was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date when the listing was last updated."
+    }
+  },
+  "required": [
+    "name",
+    "address",
+    "property_description",
+    "property_highlights",
+    "type",
+    "listing_agent",
+    "listing_source",
+    "status"
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://agsiri.com/agsiri.schema.v2.5.json",
+  "title": "Agsiri Platform Schema",
+  "description": "JSON Schema for various entities within the Agsiri Platform",
+  "type": "object",
+  "oneOf": [
+    { "$ref": "#/properties/Listing" },
+    { "$ref": "#/properties/Farm" },
+    { "$ref": "#/properties/Offering" },
+    { "$ref": "#/properties/Subscription" },
+    { "$ref": "#/properties/Campaign" },
+    { "$ref": "#/properties/Portfolio" }
+  ],
+  "definitions": {
+    "agsiri.schema.v2.5.Address": {
+      "type": "object",
+      "properties": {
+        "streetAddress": { "type": "string" },
+        "addressLocality": { "type": "string" },
+        "addressRegion": { "type": "string" },
+        "postalCode": { "type": "string" },
+        "addressCountry": { "type": "string" }
+      },
+      "required": ["streetAddress", "addressLocality", "addressRegion", "postalCode", "addressCountry"],
+      "description": "A postal address."
+    },
+    "agsiri.schema.v2.5.Agent": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "affiliation": { "type": "string" },
+        "telephone": { "type": "string" },
+        "email": { "type": "string", "format": "email" }
+      },
+      "required": ["name", "affiliation"],
+      "description": "An agent associated with a listing or other entity."
+    },
+    "agsiri.schema.v2.5.DataroomId": {
+      "type": "string",
+      "description": "Identifier for the data room associated with the entity."
+    },
+    "agsiri.schema.v2.5.ImageObject": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "An array of image URIs."
+    },
+    "agsiri.schema.v2.5.VideoObject": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" },
+      "description": "An array of video URIs."
+    },
+    "agsiri.schema.v2.5.Workflows": {
+      "type": "object",
+      "description": "An object representing workflows associated with an entity."
+    },
+    "agsiri.schema.v2.5.ExpectedReturns": {
+      "type": "object",
+      "properties": {
+        "target_net_irr": { "type": "number" },
+        "target_net_yield": { "type": "number" },
+        "net_equity_multiple": { "type": "number" },
+        "target_hold": { "type": "number" },
+        "target_net_returns": { "type": "number" }
+      },
+      "description": "Expected returns from an offering or campaign."
+    },
+    "agsiri.schema.v2.5.OfferingDetails": {
+      "type": "object",
+      "properties": {
+        "valid_from_date": { "type": "string", "format": "date" },
+        "valid_to_date": { "type": "string", "format": "date" },
+        "total_shares": { "type": "number" },
+        "shares_remaining": { "type": "number" },
+        "holding_period": { "type": "string" },
+        "minimum_holding_shares": { "type": "number" },
+        "maximum_holding_shares": { "type": "number" },
+        "subscription_start_date": { "type": "string", "format": "date" },
+        "subscription_end_date": { "type": "string", "format": "date" }
+      },
+      "description": "Details related to an offering."
+    }
+  },
+  "properties": {
+    "Listing": {
+      "type": "object",
+      "properties": {
+        "listing_id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "$ref": "#/definitions/agsiri.schema.v2.5.Address" },
+        "property_description": { "type": "string" },
+        "property_highlights": {
+          "type": "object",
+          "properties": {
+            "total_acres": { "type": "number" },
+            "tillable": { "type": "number" },
+            "Woodland": { "type": "number" },
+            "wetland": { "type": "number" },
+            "deed_restrictions": { "type": "boolean" },
+            "barns": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "size": { "type": "string" },
+                  "description": { "type": "string" }
+                },
+                "required": ["size", "description"]
+              }
+            },
+            "days_on_market": { "type": "number" },
+            "type": { "type": "string" },
+            "built_on": { "type": "string", "format": "date" },
+            "renovated_on": { "type": "array", "items": { "type": "string", "format": "date" } }
+          }
+        },
+        "listing_agent": { "$ref": "#/definitions/agsiri.schema.v2.5.Agent" },
+        "dataroom_id": { "$ref": "#/definitions/agsiri.schema.v2.5.DataroomId" },
+        "workflows": { "$ref": "#/definitions/agsiri.schema.v2.5.Workflows" },
+        "images": { "$ref": "#/definitions/agsiri.schema.v2.5.ImageObject" },
+        "videos": { "$ref": "#/definitions/agsiri.schema.v2.5.VideoObject" },
+        "maps": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "property_details": {
+          "type": "object",
+          "properties": {
+            "parking": {
+              "type": "object",
+              "properties": {
+                "number_of_spaces": { "type": "number" },
+                "type": { "type": "string" }
+              }
+            },
+            "interior": {
+              "type": "object",
+              "properties": {
+                "bathrooms": {
+                  "type": "object",
+                  "properties": {
+                    "number_full": { "type": "number" },
+                    "number_total": { "type": "number" },
+                    "bathroom1_level": { "type": "string" },
+                    "bathroom2_level": { "type": "string" }
+                  }
+                },
+                "rooms": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "type": { "type": "string" },
+                      "level": { "type": "string" }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "sales_and_tax": {
+          "type": "object",
+          "properties": {
+            "sales_history": { "type": "object" },
+            "tax_history": { "type": "object" }
+          }
+        },
+        "public_facts": { "type": "object" },
+        "schools": { "type": "object" }
+      },
+      "required": ["listing_id", "name", "address", "property_description", "listing_agent"]
+    },
+    "Farm": {
+      "type": "object",
+      "properties": {
+        "farm_id": { "type": "string" },
+        "listing_id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "$ref": "#/definitions/agsiri.schema.v2.5.Address" },
+        "location": {
+          "type": "object",
+          "properties": {
+            "longitude": { "type": "number" },
+            "latitude": { "type": "number" }
+          }
+        },
+        "property_description": { "type": "string" },
+        "dataroom_id": { "$ref": "#/definitions/agsiri.schema.v2.5.DataroomId" },
+        "workflows": { "$ref": "#/definitions/agsiri.schema.v2.5.Workflows" },
+        "images": { "$ref": "#/definitions/agsiri.schema.v2.5.ImageObject" },
+        "videos": { "$ref": "#/definitions/agsiri.schema.v2.5.VideoObject" },
+        "maps": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "parcel_information": { "type": "array", "items": { "type": "object" } },
+        "due_diligence": {
+          "type": "object",
+          "properties": {
+            "soil_information": {
+              "type": "object",
+              "properties": {
+                "documents": { "type": "array", "items": { "type": "string", "format": "uri" } },
+                "maps": { "type": "array", "items": { "type": "string", "format": "uri" } }
+              }
+            },
+            "financial_information": {
+              "type": "object",
+              "properties": {
+                "cash_flow": { "type": "object" },
+                "sales_data": { "type": "object" },
+                "expenses_data": { "type": "object" },
+                "documents": { "type": "array", "items": { "type": "string", "format": "uri" } }
+              }
+            },
+            "crop_information": { "type": "object" },
+            "other": { "type": "object" }
+          }
+        }
+      },
+      "required": ["farm_id", "listing_id", "name", "address", "property_description"]
+    },
+    "Offering": {
+      "type": "object",
+      "properties": {
+        "offering_id": { "type": "string" },
+        "farm_id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "$ref": "#/definitions/agsiri.schema.v2.5.Address" },
+        "property_description": { "type": "string" },
+        "main_picture": { "type": "string", "format": "uri" },
+        "dataroom_id": { "$ref": "#/definitions/agsiri.schema.v2.5.DataroomId" },
+        "workflows": { "$ref": "#/definitions/agsiri.schema.v2.5.Workflows" },
+        "images": { "$ref": "#/definitions/agsiri.schema.v2.5.ImageObject" },
+        "videos": { "$ref": "#/definitions/agsiri.schema.v2.5.VideoObject" },
+        "maps": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "value_driver": { "type": "object" },
+        "expected_returns": { "$ref": "#/definitions/agsiri.schema.v2.5.ExpectedReturns" },
+        "details": { "$ref": "#/definitions/agsiri.schema.v2.5.OfferingDetails" },
+        "documents": {
+          "type": "object",
+          "properties": {
+            "investor_memo": { "type": "string", "format": "uri" },
+            "investor_documents": { "type": "array", "items": { "type": "string", "format": "uri" } },
+            "compliance_audits": { "type": "array", "items": { "type": "string", "format": "uri" } }
+          }
+        }
+      },
+      "required": ["offering_id", "farm_id", "name", "address", "property_description"]
+    },
+    "Subscription": {
+      "type": "object",
+      "properties": {
+        "offering_id": { "type": "string" },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user_id": { "type": "string" },
+              "shares_subscribed": { "type": "number" },
+              "date_subscribed": { "type": "string", "format": "date" },
+              "status": { "type": "string", "enum": ["ACTIVE", "CLOSED"] }
+            },
+            "required": ["user_id", "shares_subscribed", "date_subscribed", "status"]
+          }
+        },
+        "allocations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "user_id": { "type": "string" },
+              "shares_allocated": { "type": "number" },
+              "date_allocated": { "type": "string", "format": "date" },
+              "documents": { "type": "array", "items": { "type": "string", "format": "uri" } }
+            }
+          }
+        },
+        "dataroom_id": { "$ref": "#/definitions/agsiri.schema.v2.5.DataroomId" },
+        "workflows": { "$ref": "#/definitions/agsiri.schema.v2.5.Workflows" }
+      },
+      "required": ["offering_id", "subscriptions"]
+    },
+    "Campaign": {
+      "type": "object",
+      "properties": {
+        "campaign_id": { "type": "string" },
+        "offering_id": { "type": "string" },
+        "name": { "type": "string" },
+        "address": { "$ref": "#/definitions/agsiri.schema.v2.5.Address" },
+        "property_description": { "type": "string" },
+        "dataroom_id": { "$ref": "#/definitions/agsiri.schema.v2.5.DataroomId" },
+        "workflows": { "$ref": "#/definitions/agsiri.schema.v2.5.Workflows" },
+        "main_picture": { "type": "string", "format": "uri" },
+        "images": { "$ref": "#/definitions/agsiri.schema.v2.5.ImageObject" },
+        "videos": { "$ref": "#/definitions/agsiri.schema.v2.5.VideoObject" },
+        "maps": { "type": "array", "items": { "type": "string", "format": "uri" } },
+        "expected_returns": { "$ref": "#/definitions/agsiri.schema.v2.5.ExpectedReturns" },
+        "offering_details": { "$ref": "#/definitions/agsiri.schema.v2.5.OfferingDetails" },
+        "webinars": { "type": "array", "items": { "type": "object" } },
+        "newsletters": { "type": "array", "items": { "type": "object" } }
+      },
+      "required": ["campaign_id", "offering_id", "name", "address", "property_description"]
+    },
+    "Portfolio": {
+      "type": "object",
+      "properties": {
+        "portfolio_id": { "type": "string" },
+        "user_id": { "type": "string" },
+        "investments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "offering_id": { "type": "string" },
+              "number_of_shares": { "type": "number" },
+              "share_price": { "type": "number" },
+              "investment_date": { "type": "string", "format": "date" },
+              "holding_period": { "type": "string" },
+              "documents": { "type": "array", "items": { "type": "string", "format": "uri" } },
+              "status": { "type": "string", "enum": ["ACTIVE", "CLOSED"] }
+            }
+          }
+        }
+      },
+      "required": ["portfolio_id", "user_id", "investments"]
+    }
+  }
+}

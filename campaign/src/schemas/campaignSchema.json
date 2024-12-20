@@ -1,0 +1,14 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Campaign",
+    "type": "object",
+    "properties": {
+      "campaign_id": { "type": "string" },
+      "offering_id": { "type": "string" },
+      "name": { "type": "string" },
+      "main_picture": { "type": "string" },
+      "webinars": { "type": "array", "items": { "type": "string" } },
+      "newsletters": { "type": "array", "items": { "type": "string" } }
+    },
+    "required": [ "offering_id", "name", "main_picture"]
+  }

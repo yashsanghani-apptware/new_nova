@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  listing-service:
+    build: .
+    container_name: listing-service
+    ports:
+      - "3002:3002"
+    environment:
+      - MONGO_URI=mongodb+srv://saddamshah:hOzlWf1NF6Xnx7aA@agsiri.nk7ua3s.mongodb.net/listingService
+      - REDIS_URL=redis://redis:6380
+      - JWT_SECRET=agsiri2023
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - shared-network
+
+  mongo:
+    image: mongo:4.4
+    container_name: listing-mongo
+    ports:
+      - "27018:27017"   # Using different port than policy service
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - shared-network
+
+  redis:
+    image: redis:6
+    container_name: listing-redis
+    ports:
+      - "6380:6379"     # Using different port than policy service
+    networks:
+      - shared-network
+
+# Named volumes for persistent data storage
+volumes:
+  mongo-data:
+
+# Shared network for inter-service communication
+networks:
+  shared-network:
+    external: true  # This assumes you have an external network named 'shared-network'

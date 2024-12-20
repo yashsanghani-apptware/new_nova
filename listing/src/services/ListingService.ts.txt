@@ -1,0 +1,206 @@
+class ListingService {
+  /**
+   * Creates a new listing in the Agsiri platform.
+   * @param listing - The listing object containing all required details.
+   * @returns A promise that resolves to the complete listing document.
+   */
+  createListing(listing: Listing): Promise<Listing> {
+    // Implementation here
+  }
+
+  /**
+   * Modifies an existing listing.
+   * @param listingId - The ID of the listing to modify.
+   * @param updates - An object containing the fields to update in the listing.
+   * @returns A promise that resolves to the updated listing document.
+   */
+  modifyListing(listingId: string, updates: Partial<Listing>): Promise<Listing> {
+    // Implementation here
+  }
+
+  /**
+   * Retrieves all listings from the listing service.
+   * @returns A promise that resolves to an array of all listing documents.
+   */
+  getAllListings(): Promise<Listing[]> {
+    // Implementation here
+  }
+
+  /**
+   * Retrieves a specific listing based on the provided ID.
+   * @param listingId - The ID of the listing to retrieve.
+   * @returns A promise that resolves to the requested listing document.
+   */
+  getListingById(listingId: string): Promise<Listing> {
+    // Implementation here
+  }
+
+  /**
+   * Deletes a listing from the listing service.
+   * @param listingId - The ID of the listing to delete.
+   * @returns A promise that resolves to a success message or the deleted listing document.
+   */
+  deleteListing(listingId: string): Promise<{ success: boolean; message: string }> {
+    // Implementation here
+  }
+
+  /**
+   * Searches for listings based on various criteria.
+   * @param criteria - An object containing search criteria such as location, property type, and size.
+   * @returns A promise that resolves to an array of listings that match the search criteria.
+   */
+  searchListings(criteria: ListingSearchCriteria): Promise<Listing[]> {
+    // Implementation here
+  }
+
+  /**
+   * Uploads media (images, videos, maps) to an existing listing.
+   * @param listingId - The ID of the listing to upload media to.
+   * @param mediaType - The type of media (image, video, or map).
+   * @param file - The media file to upload.
+   * @returns A promise that resolves to the updated listing document with the newly added media.
+   */
+  uploadMedia(listingId: string, mediaType: 'image' | 'video' | 'map', file: Buffer): Promise<Listing> {
+    // Implementation here
+  }
+
+  /**
+   * Adds a workflow step or process to an existing listing.
+   * @param listingId - The ID of the listing to add the workflow to.
+   * @param workflow - An object containing the workflow name and steps.
+   * @returns A promise that resolves to the updated listing document with the new workflow.
+   */
+  addWorkflow(listingId: string, workflow: Workflow): Promise<Listing> {
+    // Implementation here
+  }
+}
+
+// Interfaces and types used in the service
+
+interface Listing {
+  listing_id: string;
+  name: string;
+  address: Address;
+  property_description: string;
+  property_highlights: PropertyHighlights;
+  listing_agent: ListingAgent;
+  dataroom_id: string;
+  workflows: Workflow[];
+  images: string[];
+  videos: string[];
+  maps: string[];
+  property_details: PropertyDetails;
+  sales_and_tax: SalesAndTax;
+  public_facts: Record<string, any>;
+  schools: Record<string, any>;
+}
+
+interface Address {
+  house_number: string;
+  street: string;
+  apartment?: string;
+  city: string;
+  state: string;
+  zip: string;
+}
+
+interface PropertyHighlights {
+  total_acres: number;
+  tillable: number;
+  woodland: number;
+  wetland: number;
+  deed_restrictions: boolean;
+  barns: Barn[];
+}
+
+interface Barn {
+  size: string;
+  description: string;
+}
+
+interface ListingAgent {
+  name: string;
+  company: string;
+  phone_number: string;
+  email: string;
+}
+
+interface PropertyDetails {
+  parking: Parking;
+  interior: Interior;
+  exterior: Exterior;
+  financial: Financial;
+  utilities: Utilities;
+  location: Location;
+  other: OtherPropertyDetails;
+}
+
+interface Parking {
+  number_of_spaces: number;
+  type: string;
+}
+
+interface Interior {
+  bathrooms: Bathrooms;
+  rooms: Room[];
+  basement: Record<string, any>;
+  laundry: Record<string, any>;
+  fireplace: Record<string, any>;
+  interior_features: Record<string, any>;
+}
+
+interface Bathrooms {
+  number_full: number;
+  number_total: number;
+  bathroom1_level: string;
+  bathroom2_level: string;
+}
+
+interface Room {
+  type: string;
+  level: string;
+}
+
+interface Exterior {
+  features: Record<string, any>;
+  property_information: Record<string, any>;
+  lot_information: Record<string, any>;
+}
+
+interface Financial {
+  // financial fields
+}
+
+interface Utilities {
+  heating_and_cooling: Record<string, any>;
+  utility: Record<string, any>;
+}
+
+interface Location {
+  school_information: Record<string, any>;
+  location_information: Record<string, any>;
+}
+
+interface OtherPropertyDetails {
+  listing_information: Record<string, any>;
+}
+
+interface SalesAndTax {
+  sales_history: Record<string, any>;
+  tax_history: Record<string, any>;
+}
+
+interface Workflow {
+  workflow_name: string;
+  workflow_steps: any[]; // Define according to your workflow structure
+}
+
+interface ListingSearchCriteria {
+  city?: string;
+  state?: string;
+  zip?: string;
+  total_acres_min?: number;
+  total_acres_max?: number;
+  property_type?: string;
+}
+

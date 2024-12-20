@@ -1,0 +1,22 @@
+{
+    "HELLO": "Hello",
+  "WELCOME": "Welcome to Agsiri Smart Investment  Platform",
+  "UNAUTHORIZED":"'Unauthorized. Please log in.'",
+  "ERROR_CREATING_CAMPAIGN": "Error creating campaign",
+  "ERROR_MODIFYING_CAMPAIGN": "Error modifying campaign",
+  "CAMPAIGN_NOT_FOUND": "Campaign not found",
+  "ERROR_FETCHING_CAMPAIGN": "Error fetching campaign",
+  "ERROR_FETCHING_CAMPAIGNS": "Error fetching campaigns",
+  "ERROR_SEARCHING_CAMPAIGNS": "Error searching campaigns",
+  "CAMPAIGN_DELETED_SUCCESSFULLY": "Campaign deleted successfully",
+
+  "MISSING_PARAMETERS": "Missing required parameters",
+  "ERROR_UPLOADING_MEDIA": "Error uploading media",
+  "ERROR_FETCH_OFFERING": "Error fetching offering",
+  "NO_OFFERING_DATA": "No offering data",
+  "INVALID_CAMPAIGN_ID": "Invalid campaign id",
+  "ERROR_FETCH_LISTING": "Error fetching listing",
+  "NO_LISTING_DATA": "No listing data",
+  "ERROR_FETCH_FILE": "Error fetching file",
+  "LISTING_NOT_FOUND": "Listing not found"
+}
