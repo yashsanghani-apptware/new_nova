@@ -1,14 +1,22 @@
 # Node.js Dockerfile
 FROM node:20
 
+# Set working directory
 WORKDIR /app
 
-COPY package*.json listing/
-COPY tsconfig.json listing/
-COPY src listing/src
+# Copy project files
+COPY package*.json ./
+COPY tsconfig.json ./
+COPY src ./src
 
+# Install dependencies
 RUN npm install
+
+# Build the project
 RUN npm run build
 
+# Expose the service port
 EXPOSE 3002
+
+# Run the service
 CMD ["npm", "start"]
