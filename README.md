@@ -3,6 +3,7 @@
 **Introduction:**
 Project Nova is a transformative initiative within the Agsiri platform, aimed at revolutionizing the management and processing of property listings. Named after the cosmic phenomenon where a star undergoes a powerful explosion, Project Nova symbolizes the project's mission to ignite a new era of innovation and efficiency in how property listings are sourced, managed, and utilized. This project will harness advanced technologies, seamless integrations, and robust workflows to create a dynamic and comprehensive listing service that meets the diverse needs of all stakeholders within the Agsiri ecosystem.
 
+
 **Objective:**
 The primary objective of Project Nova is to develop a highly efficient and scalable Listing Service that integrates seamlessly with external data sources and internal workflows. The service will ensure accurate and detailed property listings are processed from sourcing to final selection, providing a solid foundation for investment decisions. The project aims to bring a significant leap forward in automation, data integrity, and user experience, making the listing process more transparent, reliable, and responsive to market needs.
 
