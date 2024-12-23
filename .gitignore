@@ -76,4 +76,4 @@ temp/
 .DS_Store
 Thumbs.db
 *.swp
-package-lock.json
+# package-lock.json
