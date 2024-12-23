@@ -24,5 +24,8 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: cd listing/     
+    # - run: cd listing/ 
+    - run: cd ~ 
+    - run: sudo docker-compose down 
+    - run: sudo docker compose up --build -d   
     # - run: npm ci
